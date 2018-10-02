@@ -1,0 +1,68 @@
+<launch>
+     <!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam file="$(find manipulators_control)/config/manipulators_controller.yaml" command="load"/>
+
+	<node name="right_cyton_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --port port_0 --type=simple
+		right_arm_shoulder_roll_position_controller
+		right_arm_shoulder_pitch_position_controller
+		right_arm_shoulder_yaw_position_controller
+		right_arm_elbow_pitch_position_controller
+		right_arm_elbow_yaw_position_controller
+		right_arm_wrist_pitch_position_controller
+		right_arm_wrist_roll_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="right_cyton_action_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --type=meta 
+	    right_cyton_joint_trajectory_action_controller
+		right_arm_shoulder_roll_position_controller
+		right_arm_shoulder_pitch_position_controller
+		right_arm_shoulder_yaw_position_controller
+		right_arm_elbow_pitch_position_controller
+		right_arm_elbow_yaw_position_controller
+		right_arm_wrist_pitch_position_controller
+		right_arm_wrist_roll_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="left_cyton_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --port port_0 --type=simple
+		left_arm_shoulder_roll_position_controller
+		left_arm_shoulder_pitch_position_controller
+		left_arm_shoulder_yaw_position_controller
+		left_arm_elbow_pitch_position_controller
+		left_arm_elbow_yaw_position_controller
+		left_arm_wrist_pitch_position_controller
+		left_arm_wrist_roll_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="left_cyton_action_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --type=meta 
+	    left_cyton_joint_trajectory_action_controller
+		left_arm_shoulder_roll_position_controller
+		left_arm_shoulder_pitch_position_controller
+		left_arm_shoulder_yaw_position_controller
+		left_arm_elbow_pitch_position_controller
+		left_arm_elbow_yaw_position_controller
+		left_arm_wrist_pitch_position_controller
+		left_arm_wrist_roll_position_controller"
+		output="screen" ns="/phoebe"/>
+
+
+	<node name="right_gripper_cyton_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --port port_0 --type=simple
+		right_arm_gripper_position_controller
+		right_arm_gripper2_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="right_gripper_cyton_action_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --type=meta 
+		right_arm_gripper_position_controller
+		right_arm_gripper2_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="left_gripper_cyton_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --port port_0 --type=simple
+		left_arm_gripper_position_controller
+		left_arm_gripper2_position_controller"
+		output="screen" ns="/phoebe"/>
+
+	<node name="left_gripper_cyton_action_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=cyton_manager --type=meta 
+		left_arm_gripper_position_controller
+		left_arm_gripper2_position_controller"
+		output="screen" ns="/phoebe"/>
+		
+</launch>

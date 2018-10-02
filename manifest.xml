@@ -1,0 +1,10 @@
+<package>
+  <description brief="manipulators_controllers">
+
+     manipulators_controllers
+
+  </description>
+  <depend package="dynamixel_controllers"/>
+
+</package>
+
